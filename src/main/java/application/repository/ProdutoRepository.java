@@ -2,10 +2,10 @@ package application.repository;
 
 import application.model.Produto;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.List;
+import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
+@Repository
 public interface ProdutoRepository extends JpaRepository<Produto, Long> {
     Optional<Produto> findByTipo(String tipo);
     void deleteByTipo(String tipo);

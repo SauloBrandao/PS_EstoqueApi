@@ -2,7 +2,6 @@ package application.service;
 
 import application.model.Produto;
 import application.repository.ProdutoRepository;
-import org.hibernate.sql.exec.ExecutionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
