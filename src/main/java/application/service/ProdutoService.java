@@ -40,8 +40,15 @@ public class ProdutoService {
         produtoRepository.deleteById(id);
     }
 
-    public Double valorTotal (Produto produto) {
-        return produto.getPreco() * produto.getQuantidadeEstoque();
+    public Double valorTotalEstoque (Long id) {
+        Optional<Produto> ProdutoDB = buscarProdutoPorId(id);
+
+        if (ProdutoDB.isEmpty()) throw  new ResponseStatusException(
+                HttpStatus.NOT_FOUND, "Produto não encontrado");
+
+        Produto produtoCalculo = ProdutoDB.get();
+
+        return produtoCalculo.getQuantidadeEstoque() * produtoCalculo.getPreco();
     }
 
     public void atualizarPorId(Produto produto, Long id){
