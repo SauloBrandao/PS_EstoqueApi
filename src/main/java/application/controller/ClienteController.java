@@ -31,9 +31,9 @@ public class ClienteController {
         clienteService.deletarClientePorId(id);
     }
 
-    @GetMapping
+    @GetMapping("{id}")
     @ResponseStatus(HttpStatus.CREATED)
-    public Optional<Cliente> buscarClientePorId(@Valid @RequestBody Long id){
+    public Optional<Cliente> buscarClientePorId(@PathVariable @Valid @RequestBody Long id){
         return clienteService.buscarClientePorid(id);
     }
 

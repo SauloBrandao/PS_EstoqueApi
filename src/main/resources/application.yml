@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:postgresql://host.docker.internal:5432/postgres
     username: postgres
-    password: sua_senha_aqui
+    password: saulo123
   jpa:
     hibernate:
       ddl-auto: update

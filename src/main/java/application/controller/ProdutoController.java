@@ -25,13 +25,13 @@ public class ProdutoController {
 
     @DeleteMapping("id")
     @ResponseStatus(HttpStatus.OK)
-    public void deletarProdutoPorId(@Valid @RequestBody Long id){
+    public void deletarProdutoPorId(@PathVariable @Valid @RequestBody Long id){
         produtoService.deletarPorId(id);
     }
 
     @DeleteMapping("tipo")
     @ResponseStatus(HttpStatus.OK)
-    public void deletarProdutoPorTipo(@Valid @RequestBody String tipo) {
+    public void deletarProdutoPorTipo(@PathVariable @Valid @RequestBody String tipo) {
         produtoService.deletarPorTipo(tipo);
     }
 
@@ -41,21 +41,21 @@ public class ProdutoController {
         return produtoService.listarTodosProdutos();
     }
 
-    @GetMapping
+    @GetMapping("{tipo}")
     @ResponseStatus(HttpStatus.OK)
-    public Optional<Produto> listarPorTido(@Valid @RequestBody String tipo) {
+    public Optional<Produto> listarPorTido(@PathVariable @Valid @RequestBody String tipo) {
         return produtoService.listarProdutosPorTipo(tipo);
     }
 
-    @GetMapping
+    @GetMapping("{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Optional<Produto> buscarProdutoPorId(@Valid @RequestBody Long id) {
+    public Optional<Produto> buscarProdutoPorId(@PathVariable @Valid @RequestBody Long id) {
         return produtoService.buscarProdutoPorId(id);
     }
 
-    @GetMapping
+    @GetMapping("{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Double valorTotalEstoque(@Valid @RequestBody Long id){
+    public Double valorTotalEstoque(@PathVariable @Valid @RequestBody Long id){
         return produtoService.valorTotalEstoque(id);
     }
 

@@ -30,9 +30,9 @@ public class ComprasController {
         return comprasService.listarTodasAsCompras();
     }
 
-    @GetMapping
+    @GetMapping("{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Optional<Compras> buscarComprasPorid(@Valid @RequestBody Long id){
+    public Optional<Compras> buscarComprasPorid(@PathVariable @Valid @RequestBody Long id){
         return buscarComprasPorid(id);
     }
 }
