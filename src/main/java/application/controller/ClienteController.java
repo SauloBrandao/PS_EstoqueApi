@@ -3,8 +3,10 @@ package application.controller;
 
 import application.model.Cliente;
 import application.service.ClienteService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,20 +20,20 @@ public class ClienteController {
     ClienteService clienteService;
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public void criarCliente(@RequestBody Cliente cliente) {
-        clienteService.criarCliente(cliente);
+    public ResponseEntity<Cliente> criarCliente(@Valid @RequestBody Cliente cliente) {
+        Cliente novoCliente = clienteService.criarCliente(cliente);
+        return ResponseEntity.status(HttpStatus.CREATED).body(novoCliente);
     }
 
     @DeleteMapping
     @ResponseStatus(HttpStatus.OK)
-    public void deletarClientePorId(@RequestBody Long id){
+    public void deletarClientePorId(@Valid @RequestBody Long id){
         clienteService.deletarClientePorId(id);
     }
 
     @GetMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Optional<Cliente> buscarClientePorId(@RequestBody Long id){
+    public Optional<Cliente> buscarClientePorId(@Valid @RequestBody Long id){
         return clienteService.buscarClientePorid(id);
     }
 
@@ -43,7 +45,7 @@ public class ClienteController {
 
     @PutMapping
     @ResponseStatus(HttpStatus.OK)
-    public void atualiarPorId(@RequestBody Long id, Cliente cliente){
+    public void atualiarPorId(@Valid @RequestBody Long id, Cliente cliente){
         clienteService.atualizarPorid(id, cliente);
     }
 }

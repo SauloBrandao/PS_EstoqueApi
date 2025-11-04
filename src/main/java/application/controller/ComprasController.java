@@ -3,6 +3,7 @@ package application.controller;
 
 import application.model.Compras;
 import application.service.ComprasService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +20,7 @@ public class ComprasController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void registrarCompra(@RequestBody Compras compras) {
+    public void registrarCompra(@Valid @RequestBody Compras compras) {
         comprasService.registrarCompra(compras);
     }
 
@@ -31,7 +32,7 @@ public class ComprasController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public Optional<Compras> buscarComprasPorid(@RequestBody Long id){
+    public Optional<Compras> buscarComprasPorid(@Valid @RequestBody Long id){
         return buscarComprasPorid(id);
     }
 }

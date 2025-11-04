@@ -5,19 +5,21 @@ import application.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Validated
 public class ClienteService {
 
     @Autowired
     ClienteRepository clienteRepository;
 
-    public void criarCliente(Cliente cliente) {
-        clienteRepository.save(cliente);
+    public Cliente criarCliente(Cliente cliente) {
+        return clienteRepository.save(cliente);
     }
 
     public void deletarClientePorId(Long id) {

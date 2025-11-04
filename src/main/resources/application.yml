@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/estoqueAPI
+    url: jdbc:postgresql://host.docker.internal:5432/postgres
     username: postgres
-    password: saulo123
+    password: sua_senha_aqui
   jpa:
     hibernate:
       ddl-auto: update

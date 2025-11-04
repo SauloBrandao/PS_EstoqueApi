@@ -2,6 +2,7 @@ package application.controller;
 
 import application.model.Produto;
 import application.service.ProdutoService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -18,19 +19,19 @@ public class ProdutoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void criarProduto(@RequestBody Produto produto) {
+    public void criarProduto(@Valid @RequestBody Produto produto) {
         produtoService.criarProduto(produto);
     }
 
     @DeleteMapping("id")
     @ResponseStatus(HttpStatus.OK)
-    public void deletarProdutoPorId(@RequestBody Long id){
+    public void deletarProdutoPorId(@Valid @RequestBody Long id){
         produtoService.deletarPorId(id);
     }
 
     @DeleteMapping("tipo")
     @ResponseStatus(HttpStatus.OK)
-    public void deletarProdutoPorTipo(@RequestBody String tipo) {
+    public void deletarProdutoPorTipo(@Valid @RequestBody String tipo) {
         produtoService.deletarPorTipo(tipo);
     }
 
@@ -42,26 +43,26 @@ public class ProdutoController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public Optional<Produto> listarPorTido(@RequestBody String tipo) {
+    public Optional<Produto> listarPorTido(@Valid @RequestBody String tipo) {
         return produtoService.listarProdutosPorTipo(tipo);
     }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public Optional<Produto> buscarProdutoPorId(@RequestBody Long id) {
+    public Optional<Produto> buscarProdutoPorId(@Valid @RequestBody Long id) {
         return produtoService.buscarProdutoPorId(id);
     }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public Double valorTotalEstoque(@RequestBody Long id){
+    public Double valorTotalEstoque(@Valid @RequestBody Long id){
         return produtoService.valorTotalEstoque(id);
     }
 
 
     @PutMapping
     @ResponseStatus(HttpStatus.OK)
-    public void atualizarProdutoPorId(@RequestBody Produto produto, Long id){
+    public void atualizarProdutoPorId(@Valid @RequestBody Produto produto, Long id){
         produtoService.atualizarPorId(produto, id);
     }
 
