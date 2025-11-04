@@ -40,7 +40,7 @@ public class ProdutoService {
         produtoRepository.deleteById(id);
     }
 
-    public Double Produto (Produto produto) {
+    public Double valorTotal (Produto produto) {
         return produto.getPreco() * produto.getQuantidadeEstoque();
     }
 
