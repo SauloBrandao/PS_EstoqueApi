@@ -1,6 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://host.docker.internal:5432/postgres
+    url: jdbc:postgresql://localhost:5432/estoqueAPI
+    # para conectar com a api dentro do container ->  url: jdbc:postgresql://host.docker.internal:5432/nome-bd
+    # para conectar com a api fora do container -> jdbc:postgresql://localhost:5432/nome-bd
     username: postgres
     password: saulo123
   jpa:

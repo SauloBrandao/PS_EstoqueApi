@@ -31,13 +31,13 @@ public class ClienteController {
         clienteService.deletarClientePorId(id);
     }
 
-    @GetMapping("{id}")
+    @GetMapping("{id}/listando-por-id")
     @ResponseStatus(HttpStatus.CREATED)
     public Optional<Cliente> buscarClientePorId(@PathVariable @Valid @RequestBody Long id){
         return clienteService.buscarClientePorid(id);
     }
 
-    @GetMapping
+    @GetMapping("todos-clientes")
     @ResponseStatus
     public List<Cliente> listarTodosOsClientes() {
         return clienteService.listarTodosOsCliente();

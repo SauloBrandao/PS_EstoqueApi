@@ -23,13 +23,13 @@ public class ProdutoController {
         produtoService.criarProduto(produto);
     }
 
-    @DeleteMapping("id")
+    @DeleteMapping("id/deletando-por-id")
     @ResponseStatus(HttpStatus.OK)
     public void deletarProdutoPorId(@PathVariable @Valid @RequestBody Long id){
         produtoService.deletarPorId(id);
     }
 
-    @DeleteMapping("tipo")
+    @DeleteMapping("tipo/deletando-por-tipo")
     @ResponseStatus(HttpStatus.OK)
     public void deletarProdutoPorTipo(@PathVariable @Valid @RequestBody String tipo) {
         produtoService.deletarPorTipo(tipo);
@@ -47,13 +47,13 @@ public class ProdutoController {
         return produtoService.listarProdutosPorTipo(tipo);
     }
 
-    @GetMapping("{id}")
+    @GetMapping("{id}/busca")
     @ResponseStatus(HttpStatus.OK)
     public Optional<Produto> buscarProdutoPorId(@PathVariable @Valid @RequestBody Long id) {
         return produtoService.buscarProdutoPorId(id);
     }
 
-    @GetMapping("{id}")
+    @GetMapping("{id}/valor-total")
     @ResponseStatus(HttpStatus.OK)
     public Double valorTotalEstoque(@PathVariable @Valid @RequestBody Long id){
         return produtoService.valorTotalEstoque(id);
